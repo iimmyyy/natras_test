@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" fill="none">
+  <!-- Mark -->
+  <path d="M40 4 C58 4 72 18 72 36 C72 46 68 54 61 60" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M59 62 C52 67 45 70 37 70 C19 70 4 56 4 38 C4 28 8 20 15 14" stroke="white" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <circle cx="38" cy="38" r="24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+  <text x="38" y="52" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="34" fill="white">N</text>
+  <!-- Wordmark -->
+  <text x="90" y="46" font-family="'Space Grotesk',sans-serif" font-weight="700" font-size="32" fill="white" letter-spacing="1">NUTRAS</text>
+  <text x="92" y="63" font-family="'Space Grotesk',sans-serif" font-weight="400" font-size="13" fill="rgba(255,255,255,0.75)" letter-spacing="8">DIDACTIC</text>
+</svg>

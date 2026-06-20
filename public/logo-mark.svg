@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Outer swoosh circle -->
+  <path d="M60 8 C86 8 108 30 108 56 C108 70 102 82 92 91" stroke="#1B3FA0" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M88 94 C78 102 68 107 56 108 C30 108 8 86 8 60 C8 46 14 34 24 25" stroke="#1B3FA0" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <!-- Inner circle -->
+  <circle cx="60" cy="60" r="38" fill="white" stroke="#1B3FA0" stroke-width="2"/>
+  <!-- N letter -->
+  <text x="60" y="80" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="52" fill="#1B3FA0">N</text>
+</svg>

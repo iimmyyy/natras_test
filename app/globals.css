@@ -1,26 +1,188 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #41506B;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #1B3FA0;
+  color: #ffffff;
+}
+
+/* Floaty badge */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+/* Pulse dot */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Shimmer on cards */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* Gradient pan on hero */
+@keyframes grad-pan {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.hero-bg {
+  background: linear-gradient(135deg, #0C2155 0%, #163A8C 40%, #1B3FA0 70%, #1a4db8 100%);
+  background-size: 300% 300%;
+  animation: grad-pan 12s ease infinite;
+}
+
+/* Grid lines overlay */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Underline hover nav */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: rgba(255,255,255,0.8);
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Card lift */
+.card-lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(27,63,160,0.14);
+}
+
+/* Button shine */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.4s ease;
+}
+.btn-primary:hover::before { left: 100%; }
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(27,63,160,0.55);
+}
+
+/* Tab active indicator */
+.tab-btn {
+  position: relative;
+  transition: color 0.2s, background 0.2s;
+}
+
+/* Placeholder image pattern */
+.img-placeholder {
+  background: repeating-linear-gradient(
+    45deg,
+    #dde4f0 0px, #dde4f0 1px,
+    #e8edf8 0px, #e8edf8 50%
+  );
+  background-size: 14px 14px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F5F7FC; }
+::-webkit-scrollbar-thumb { background: #B9C7EC; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #1B3FA0; }
+
+/* Section divider — blue gradient brand bar */
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, #071630 0%, #1B3FA0 40%, #4A90E2 60%, #1B3FA0 80%, #071630 100%);
+}
+
+/* Gradient text utilities */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #93C5FD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #0C2155 0%, #1B3FA0 60%, #4A90E2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Strong brand: accent bar before headings */
+.accent-bar {
+  display: block;
+  width: 48px;
+  height: 4px;
+  background: linear-gradient(90deg, #1B3FA0, #4A90E2);
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+/* Eyebrow pill — white outline chip on dark bg */
+.eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.12);
+  color: #ffffff;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+}
+
+/* Big faint watermark N */
+.brand-watermark {
+  position: absolute;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
