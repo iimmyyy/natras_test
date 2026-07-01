@@ -6,7 +6,6 @@ import Products from '@/components/Products'
 import TechnicalSpec from '@/components/TechnicalSpec'
 import WhyUs from '@/components/WhyUs'
 import Partners from '@/components/Partners'
-import Blog from '@/components/Blog'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import SectionDivider from '@/components/SectionDivider'
@@ -29,8 +28,6 @@ export default function Home() {
         <WhyUs />
         <SectionDivider />
         <Partners />
-        <SectionDivider />
-        <Blog />
         <SectionDivider />
         <Contact />
       </main>

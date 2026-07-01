@@ -46,21 +46,29 @@ export default function Contact() {
 
             {/* Contact details */}
             {[
-              { icon: '📍', label: 'Bangkok, Thailand' },
-              { icon: '📞', label: '+66 2 000 0000' },
-              { icon: '✉️', label: 'sales@nutras-didactic.com' },
+              { icon: '📍', label: t.location, href: null },
+              { icon: '✉️', label: t.email, href: `mailto:${t.email}` },
             ].map((item, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: '12px',
                 marginBottom: '12px',
               }}>
                 <span style={{ fontSize: '16px' }}>{item.icon}</span>
-                <span style={{
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: '15px', color: '#9FB6F0',
-                }}>
-                  {item.label}
-                </span>
+                {item.href ? (
+                  <a href={item.href} style={{
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: '15px', color: '#9FB6F0', textDecoration: 'none',
+                  }}>
+                    {item.label}
+                  </a>
+                ) : (
+                  <span style={{
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: '15px', color: '#9FB6F0',
+                  }}>
+                    {item.label}
+                  </span>
+                )}
               </div>
             ))}
           </AnimateIn>

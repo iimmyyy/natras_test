@@ -33,7 +33,7 @@ export default function BackButton() {
         e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
       }}
     >
-      ← Back
+      ← กลับ
     </button>
   )
 }

@@ -1,18 +1,10 @@
 'use client'
 
 import AnimateIn from './AnimateIn'
-import Counter from './Counter'
 import { useLang } from './LangContext'
 
 export default function About() {
   const { t } = useLang()
-
-  const stats = [
-    { label: 'Founded', display: '2009', value: null, suffix: '' },
-    { label: 'Countries', display: null, value: 30, suffix: '+' },
-    { label: 'Laboratories', display: null, value: 1200, suffix: '+' },
-    { label: 'Catalog products', display: null, value: 450, suffix: '+' },
-  ]
 
   const cardStyles = [
     { backgroundColor: '#1B3FA0', border: '1px solid transparent', numColor: '#ffffff', labelColor: 'rgba(255,255,255,0.55)', textColor: '#ffffff' },
@@ -71,9 +63,9 @@ export default function About() {
             </AnimateIn>
           </div>
 
-          {/* Right — stat cards 2×2 */}
+          {/* Right — capability cards 2×2 */}
           <div className="grid grid-cols-2 gap-4">
-            {stats.map((s, i) => {
+            {t.aboutCards.map((c, i) => {
               const cs = cardStyles[i]
               return (
                 <AnimateIn key={i} delay={0.1 + i * 0.09} direction="up">
@@ -89,19 +81,18 @@ export default function About() {
                   >
                     <div style={{
                       fontFamily: 'var(--font-heading), sans-serif',
-                      fontWeight: '700', fontSize: '38px',
+                      fontWeight: '700', fontSize: '17px',
                       color: cs.numColor,
-                      lineHeight: '1', marginBottom: '8px',
+                      lineHeight: '1.25', marginBottom: '10px',
                     }}>
-                      {s.value ? <Counter to={s.value} suffix={s.suffix} /> : s.display}
+                      {c.title}
                     </div>
                     <div style={{
-                      fontFamily: 'var(--font-mono), monospace',
-                      fontSize: '10px',
-                      color: cs.labelColor,
-                      textTransform: 'uppercase', letterSpacing: '0.1em',
+                      fontFamily: 'var(--font-sans), sans-serif',
+                      fontSize: '13px', lineHeight: '1.6',
+                      color: cs.textColor === '#ffffff' ? 'rgba(255,255,255,0.72)' : '#52607C',
                     }}>
-                      {s.label}
+                      {c.body}
                     </div>
                   </div>
                 </AnimateIn>

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useLang } from './LangContext'
 
 export default function Header() {
-  const { t, lang, setLang } = useLang()
+  const { t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -30,11 +30,11 @@ export default function Header() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 shrink-0 group">
           <Image
-            src="/logo-white.svg"
-            alt="NUTRAS DIDACTIC"
-            width={200}
-            height={48}
-            style={{ height: '38px', width: 'auto' }}
+            src="/nutras-logo-white-t.png"
+            alt="NuTras Didactic"
+            width={400}
+            height={101}
+            style={{ height: '34px', width: 'auto' }}
             priority
           />
         </a>
@@ -63,37 +63,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          {/* Lang toggle */}
-          <div
-            style={{
-              display: 'flex',
-              border: '1px solid rgba(255,255,255,0.2)',
-              borderRadius: '4px',
-              overflow: 'hidden',
-            }}
-          >
-            {(['en', 'th'] as const).map(l => (
-              <button
-                key={l}
-                onClick={() => setLang(l)}
-                style={{
-                  fontFamily: 'var(--font-mono), monospace',
-                  fontSize: '11px',
-                  fontWeight: '600',
-                  padding: '5px 10px',
-                  background: lang === l ? '#ffffff' : 'transparent',
-                  color: lang === l ? '#1B3FA0' : '#9FB6F0',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  letterSpacing: '0.05em',
-                }}
-              >
-                {l.toUpperCase()}
-              </button>
-            ))}
-          </div>
-
           {/* CTA */}
           <a
             href="#contact"

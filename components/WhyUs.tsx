@@ -8,24 +8,31 @@ export default function WhyUs() {
   const { t } = useLang()
 
   return (
-    <section style={{ backgroundColor: '#1B3FA0' }} className="w-full">
+    <section style={{ backgroundColor: '#0C2155' }} className="w-full">
       <div className="max-w-7xl mx-auto px-6 py-14 lg:py-20">
         <AnimateIn>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <span className="accent-bar" />
+            <div style={{
+              fontFamily: 'var(--font-mono), monospace',
+              fontSize: '11px', fontWeight: '600',
+              color: '#7F9AE8', letterSpacing: '0.14em',
+              textTransform: 'uppercase', marginBottom: '12px',
+            }}>
+              {t.workflowLabel}
+            </div>
             <h2 style={{
               fontFamily: 'var(--font-heading), sans-serif',
               fontWeight: '700',
               fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)',
               color: '#ffffff',
             }}>
-              Why choose NUTRAS DIDACTIC?
+              {t.workflowH2}
             </h2>
           </div>
         </AnimateIn>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {t.whyUsItems.map((item, i) => (
+          {t.workflowSteps.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 28 }}

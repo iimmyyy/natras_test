@@ -28,10 +28,10 @@ export default function TechnicalSpec() {
               }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80"
-                alt="NTX-3100 Electrical Machines Trainer"
+                src="/products/nt-hydrogen.jpg"
+                alt="NuTras Hydrogen Power Generation Trainer"
                 fill
-                style={{ objectFit: 'cover', opacity: 0.75 }}
+                style={{ objectFit: 'cover' }}
               />
               <div style={{
                 position: 'absolute', inset: 0,
@@ -52,7 +52,7 @@ export default function TechnicalSpec() {
                   fontFamily: 'var(--font-heading), sans-serif',
                   fontWeight: '700', fontSize: '18px', color: '#ffffff',
                 }}>
-                  NTX-3100
+                  Hydrogen Power Generation Trainer
                 </div>
               </div>
             </div>

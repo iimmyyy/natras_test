@@ -13,53 +13,19 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Image
-              src="/logo-white.svg"
-              alt="NUTRAS DIDACTIC"
-              width={180}
-              height={44}
-              style={{ height: '34px', width: 'auto', marginBottom: '16px', opacity: 0.9 }}
+              src="/nutras-logo-white-t.png"
+              alt="NuTras Didactic"
+              width={360}
+              height={91}
+              style={{ height: '32px', width: 'auto', marginBottom: '16px', opacity: 0.95 }}
             />
             <p style={{
               fontFamily: 'var(--font-sans), sans-serif',
               fontSize: '13px', lineHeight: '1.7',
-              color: '#6B80B0', maxWidth: '240px',
+              color: '#6B80B0', maxWidth: '260px',
             }}>
               {t.footerTagline}
             </p>
-            {/* Socials */}
-            <div style={{ display: 'flex', gap: '8px', marginTop: '20px' }}>
-              {[
-                { label: 'in', title: 'LinkedIn' },
-                { label: 'YT', title: 'YouTube' },
-                { label: 'X', title: 'Twitter' },
-              ].map(s => (
-                <a
-                  key={s.label}
-                  href="#"
-                  title={s.title}
-                  style={{
-                    width: '32px', height: '32px',
-                    border: '1px solid rgba(255,255,255,0.12)',
-                    borderRadius: '6px',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontFamily: 'var(--font-mono), monospace',
-                    fontSize: '11px', fontWeight: '700',
-                    color: '#7F9AE8', textDecoration: 'none',
-                    transition: 'border-color 0.2s, color 0.2s',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = '#60A5FA'
-                    e.currentTarget.style.color = '#60A5FA'
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'
-                    e.currentTarget.style.color = '#7F9AE8'
-                  }}
-                >
-                  {s.label}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Products */}
@@ -99,7 +65,7 @@ export default function Footer() {
               Company
             </div>
             {t.footerCompany.map((item, i) => (
-              <a key={i} href="#about" style={{
+              <a key={i} href={t.footerCompanyLinks[i]} style={{
                 display: 'block',
                 fontFamily: 'var(--font-sans), sans-serif',
                 fontSize: '13px', color: '#8DA0C8',
@@ -149,13 +115,18 @@ export default function Footer() {
           }}>
             {t.copyright}
           </div>
-          <div style={{
-            fontFamily: 'var(--font-mono), monospace',
-            fontSize: '11px', color: '#4B5E8A',
-            letterSpacing: '0.06em',
-          }}>
-            {t.certs}
-          </div>
+          <a
+            href="https://www.lucas-nuelle.us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: 'var(--font-mono), monospace',
+              fontSize: '11px', color: '#7F9AE8',
+              letterSpacing: '0.06em', textDecoration: 'none',
+            }}
+          >
+            Lucas-Nülle official site ↗
+          </a>
         </div>
       </div>
     </footer>

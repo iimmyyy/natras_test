@@ -82,7 +82,7 @@ export default function Hero() {
               className="flex flex-wrap gap-3 mb-10"
             >
               <a
-                href="#contact"
+                href="#products"
                 className="btn-primary"
                 style={{
                   backgroundColor: '#ffffff',
@@ -101,7 +101,7 @@ export default function Hero() {
                 {t.heroCta1}
               </a>
               <a
-                href="#"
+                href="#contact"
                 style={{
                   border: '1.5px solid rgba(185,199,236,0.5)',
                   color: '#C9D5F2',
@@ -126,7 +126,7 @@ export default function Hero() {
               </a>
             </motion.div>
 
-            {/* Stats */}
+            {/* Focus areas */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -134,34 +134,31 @@ export default function Hero() {
               style={{
                 borderTop: '1px solid rgba(255,255,255,0.12)',
                 paddingTop: '28px',
-                display: 'flex',
-                gap: '36px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: '18px 28px',
+                maxWidth: '520px',
               }}
             >
-              {[
-                { num: 15, suffix: '+', label: 'Years' },
-                { num: 30, suffix: '+', label: 'Countries' },
-                { num: 1200, suffix: '+', label: 'Installations' },
-              ].map((stat, i) => (
+              {t.heroMetrics.map((stat, i) => (
                 <div key={i}>
                   <div style={{
                     fontFamily: 'var(--font-heading), sans-serif',
                     fontWeight: '700',
-                    fontSize: '32px',
+                    fontSize: '26px',
                     color: '#ffffff',
                     lineHeight: '1',
                   }}>
-                    {stat.num}{stat.suffix}
+                    {stat.k}
                   </div>
                   <div style={{
-                    fontFamily: 'var(--font-mono), monospace',
-                    fontSize: '10px',
-                    color: '#7F9AE8',
-                    marginTop: '5px',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.1em',
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: '13px',
+                    color: '#C9D5F2',
+                    marginTop: '6px',
+                    lineHeight: '1.4',
                   }}>
-                    {stat.label}
+                    {stat.v}
                   </div>
                 </div>
               ))}
@@ -185,14 +182,14 @@ export default function Hero() {
               }}
             >
               <Image
-                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=900&q=80"
-                alt="Electrical Machines Trainer Lab"
+                src="/products/power.jpg"
+                alt="Lucas-Nülle power engineering training laboratory"
                 fill
                 style={{ objectFit: 'cover' }}
                 priority
               />
 
-              {/* Floating badge */}
+              {/* Floating caption */}
               <div
                 className="animate-floaty"
                 style={{
@@ -201,56 +198,26 @@ export default function Hero() {
                   borderRadius: '10px',
                   padding: '12px 18px',
                   boxShadow: '0 12px 40px rgba(27,63,160,0.22)',
+                  maxWidth: '230px',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-                  <span className="animate-pulse-dot" style={{
-                    display: 'inline-block', width: '6px', height: '6px',
-                    borderRadius: '50%', background: '#ffffff',
-                  }} />
-                  <span style={{
-                    fontFamily: 'var(--font-mono), monospace',
-                    fontSize: '10px', color: '#1B3FA0',
-                    fontWeight: '600', letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                  }}>
-                    Certified
-                  </span>
-                </div>
                 <div style={{
                   fontFamily: 'var(--font-mono), monospace',
-                  fontSize: '11px', color: '#52607C',
-                  fontWeight: '500',
+                  fontSize: '10px', color: '#1B3FA0',
+                  fontWeight: '600', letterSpacing: '0.06em',
+                  textTransform: 'uppercase', marginBottom: '4px',
                 }}>
-                  {t.heroBadge}
+                  Lucas-Nülle Thailand
+                </div>
+                <div style={{
+                  fontFamily: 'var(--font-sans), sans-serif',
+                  fontSize: '12px', color: '#52607C',
+                  fontWeight: '500', lineHeight: '1.45',
+                }}>
+                  ชุดฝึกด้านระบบไฟฟ้ากำลัง EV/ADAS ระบบอัตโนมัติ และ Industry 4.0
                 </div>
               </div>
             </div>
-
-            {/* Mini stat card — top left */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.65 }}
-              style={{
-                position: 'absolute', top: '-18px', left: '-18px',
-                backgroundColor: '#0C2155',
-                border: '1px solid rgba(185,199,236,0.15)',
-                borderRadius: '10px',
-                padding: '14px 18px',
-                boxShadow: '0 8px 32px rgba(12,33,85,0.5)',
-              }}
-            >
-              <div style={{
-                fontFamily: 'var(--font-heading), sans-serif',
-                fontWeight: '700', fontSize: '22px', color: '#ffffff',
-              }}>450+</div>
-              <div style={{
-                fontFamily: 'var(--font-mono), monospace',
-                fontSize: '9px', color: '#7F9AE8',
-                textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: '2px',
-              }}>Catalog products</div>
-            </motion.div>
           </motion.div>
         </div>
       </div>

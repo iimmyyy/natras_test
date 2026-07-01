@@ -5,30 +5,8 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from './LangContext'
 import Link from 'next/link'
-import { products } from '@/app/data'
+import { products, productImages, catColors, catLabels, brandLabels } from '@/app/data'
 import AnimateIn from './AnimateIn'
-
-const productImages: Record<string, string> = {
-  ntx3100: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=75',
-  ntx2200: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=75',
-  ntx1400: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=75',
-  nta5200: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&q=75',
-  nta7000: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&q=75',
-  nta3300: 'https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=600&q=75',
-  ntm4100: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75',
-  ntm4600: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=75',
-  ntm2800: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=75',
-  ntr6100: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=75',
-  ntr6400: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=75',
-  ntr8000: 'https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=600&q=75',
-}
-
-const catColors: Record<string, string> = {
-  ee: '#1B3FA0', auto: '#0C2155', mech: '#163A8C', ren: '#4A90E2',
-}
-const catLabels: Record<string, string> = {
-  ee: 'Electrical', auto: 'Automation', mech: 'Mechanical', ren: 'Renewable',
-}
 
 export default function Products() {
   const { t } = useLang()
@@ -43,7 +21,7 @@ export default function Products() {
           <div style={{
             fontFamily: 'var(--font-mono), monospace',
             fontSize: '11px', fontWeight: '600',
-            color: '#FF7A00', letterSpacing: '0.12em',
+            color: '#78c1ff', letterSpacing: '0.12em',
             textTransform: 'uppercase', marginBottom: '12px',
           }}>
             {t.productsLabel}
@@ -75,7 +53,7 @@ export default function Products() {
                     padding: '8px 18px', borderRadius: '6px',
                     border: active ? 'none' : '1px solid rgba(255,255,255,0.2)',
                     backgroundColor: active ? '#ffffff' : 'rgba(255,255,255,0.08)',
-                    color: active ? '#1B3FA0' : '#9FB6F0',
+                    color: active ? '#003f9a' : '#9FB6F0',
                     cursor: 'pointer',
                     transition: 'all 0.2s',
                     boxShadow: active ? '0 4px 20px rgba(255,255,255,0.25)' : 'none',
@@ -125,7 +103,7 @@ export default function Products() {
                   {/* Category pill */}
                   <div style={{
                     position: 'absolute', top: '12px', left: '12px',
-                    backgroundColor: catColors[p.category] ?? '#1B3FA0',
+                    backgroundColor: catColors[p.category] ?? '#003f9a',
                     color: '#ffffff',
                     fontFamily: 'var(--font-mono), monospace',
                     fontSize: '9px', fontWeight: '600',
@@ -133,6 +111,19 @@ export default function Products() {
                     letterSpacing: '0.08em', textTransform: 'uppercase',
                   }}>
                     {catLabels[p.category]}
+                  </div>
+                  {/* Brand badge */}
+                  <div style={{
+                    position: 'absolute', top: '12px', right: '12px',
+                    backgroundColor: p.brand === 'ln' ? '#f58531' : '#ffffff',
+                    color: p.brand === 'ln' ? '#ffffff' : '#003f9a',
+                    fontFamily: 'var(--font-mono), monospace',
+                    fontSize: '9px', fontWeight: '700',
+                    padding: '4px 8px', borderRadius: '4px',
+                    letterSpacing: '0.06em',
+                    boxShadow: '0 2px 8px rgba(7,17,31,0.18)',
+                  }}>
+                    {brandLabels[p.brand]}
                   </div>
                 </div>
                 {/* Content */}
@@ -143,7 +134,7 @@ export default function Products() {
                     letterSpacing: '0.1em', marginBottom: '6px',
                     textTransform: 'uppercase',
                   }}>
-                    {p.model}
+                    {catLabels[p.category]}
                   </div>
                   <div style={{
                     fontFamily: 'var(--font-heading), sans-serif',
@@ -155,10 +146,10 @@ export default function Products() {
                   <span style={{
                     fontFamily: 'var(--font-sans), sans-serif',
                     fontSize: '13px', fontWeight: '600',
-                    color: '#1B3FA0',
+                    color: '#003f9a',
                     display: 'flex', alignItems: 'center', gap: '4px',
                   }}>
-                    View specs <span style={{ fontSize: '15px' }}>→</span>
+                    ดูรายละเอียด <span style={{ fontSize: '15px' }}>→</span>
                   </span>
                 </div>
               </motion.div>

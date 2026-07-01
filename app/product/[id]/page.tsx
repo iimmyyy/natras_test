@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { products, productImages, productDetails, catLabels, catColors } from '@/app/data'
+import { products, productImages, productDetails, catLabels, catColors, brandLabels } from '@/app/data'
 import BackButton from '@/components/BackButton'
 
 export function generateStaticParams() {
@@ -37,7 +37,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               backgroundColor: 'rgba(255,255,255,0.2)',
             }} />
             <Link href="/">
-              <Image src="/logo-white.svg" alt="NUTRAS DIDACTIC" width={160} height={40}
+              <Image src="/nutras-logo-white-t.png" alt="NuTras Didactic" width={400} height={101}
                 style={{ height: '30px', width: 'auto' }} />
             </Link>
           </div>
@@ -51,7 +51,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               textDecoration: 'none', whiteSpace: 'nowrap',
             }}
           >
-            Request a quote →
+            ขอใบเสนอราคา →
           </a>
         </div>
       </div>
@@ -72,11 +72,11 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             letterSpacing: '0.1em', textTransform: 'uppercase',
             marginBottom: '20px', display: 'flex', gap: '8px', alignItems: 'center',
           }}>
-            <Link href="/" style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'none' }}>Home</Link>
+            <Link href="/" style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'none' }}>หน้าแรก</Link>
             <span>›</span>
-            <Link href="/#products" style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'none' }}>Products</Link>
+            <Link href="/#products" style={{ color: 'rgba(255,255,255,0.45)', textDecoration: 'none' }}>สินค้า</Link>
             <span>›</span>
-            <span style={{ color: '#ffffff' }}>{product.model}</span>
+            <span style={{ color: '#ffffff' }}>{product.name}</span>
           </div>
 
           {/* Category tag */}
@@ -109,7 +109,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             fontSize: '13px', color: 'rgba(255,255,255,0.5)',
             letterSpacing: '0.1em', textTransform: 'uppercase',
           }}>
-            {product.model} · {detail.subtitle}
+            {detail.subtitle}
           </div>
         </div>
       </div>
@@ -137,7 +137,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 position: 'absolute', inset: 0,
                 background: 'linear-gradient(to top, rgba(7,22,48,0.5) 0%, transparent 50%)',
               }} />
-              {/* Model badge on image */}
+              {/* Brand badge on image */}
               <div style={{
                 position: 'absolute', bottom: '20px', left: '20px',
                 background: 'rgba(7,22,48,0.85)',
@@ -149,31 +149,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                   fontFamily: 'var(--font-mono), monospace',
                   fontSize: '10px', color: 'rgba(255,255,255,0.5)',
                   letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '2px',
-                }}>Model</div>
+                }}>{product.brand === 'ln' ? 'Distributed brand' : 'Developed by'}</div>
                 <div style={{
                   fontFamily: 'var(--font-heading), sans-serif',
                   fontSize: '18px', fontWeight: '700', color: '#ffffff',
                 }}>
-                  {product.model}
+                  {product.brand === 'ln' ? 'Lucas-Nülle' : 'NuTras Didactic'}
                 </div>
               </div>
-            </div>
-
-            {/* Cert badges */}
-            <div style={{
-              display: 'flex', gap: '8px', marginTop: '16px', flexWrap: 'wrap',
-            }}>
-              {['ISO 9001', 'CE Marked', 'IEC Compliant', '3-Year Warranty'].map(b => (
-                <div key={b} style={{
-                  fontFamily: 'var(--font-mono), monospace',
-                  fontSize: '10px', fontWeight: '600',
-                  color: '#1B3FA0', letterSpacing: '0.08em',
-                  border: '1.5px solid #1B3FA0',
-                  borderRadius: '4px', padding: '4px 10px',
-                }}>
-                  {b}
-                </div>
-              ))}
             </div>
           </div>
 
@@ -186,7 +169,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               color: '#1B3FA0', letterSpacing: '0.14em',
               textTransform: 'uppercase', marginBottom: '10px',
             }}>
-              Overview
+              ภาพรวม
             </div>
             <p style={{
               fontFamily: 'var(--font-sans), sans-serif',
@@ -210,7 +193,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 color: '#1B3FA0', letterSpacing: '0.12em',
                 textTransform: 'uppercase', marginBottom: '12px',
               }}>
-                Key features
+                คุณสมบัติเด่น
               </div>
               <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
                 {detail.highlights.map((h, i) => (
@@ -247,7 +230,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               color: '#1B3FA0', letterSpacing: '0.14em',
               textTransform: 'uppercase', marginBottom: '14px',
             }}>
-              Technical specifications
+              ข้อมูลจำเพาะทางเทคนิค
             </div>
             <div style={{
               border: '1px solid #E8EBF2',
@@ -297,28 +280,46 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                   fontWeight: '700', fontSize: '17px', color: '#ffffff',
                   marginBottom: '4px',
                 }}>
-                  Interested in the {product.model}?
+                  สนใจ {product.name}?
                 </div>
                 <div style={{
                   fontFamily: 'var(--font-sans), sans-serif',
                   fontSize: '14px', color: 'rgba(255,255,255,0.6)',
                 }}>
-                  Request a quote or ask our engineers a question.
+                  ขอใบเสนอราคา หรือสอบถามทีมวิศวกรของเราได้เลย
                 </div>
               </div>
-              <a
-                href="/#contact"
-                style={{
-                  background: '#ffffff', color: '#1B3FA0',
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontWeight: '700', fontSize: '14px',
-                  padding: '12px 24px', borderRadius: '6px',
-                  textDecoration: 'none', whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                }}
-              >
-                Request a quote →
-              </a>
+              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', flexShrink: 0 }}>
+                {detail.lnUrl && (
+                  <a
+                    href={detail.lnUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: 'rgba(255,255,255,0.12)', color: '#ffffff',
+                      border: '1px solid rgba(255,255,255,0.35)',
+                      fontFamily: 'var(--font-sans), sans-serif',
+                      fontWeight: '700', fontSize: '14px',
+                      padding: '12px 20px', borderRadius: '6px',
+                      textDecoration: 'none', whiteSpace: 'nowrap',
+                    }}
+                  >
+                    ดูบน Lucas-Nülle ↗
+                  </a>
+                )}
+                <a
+                  href="/#contact"
+                  style={{
+                    background: '#ffffff', color: '#003f9a',
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontWeight: '700', fontSize: '14px',
+                    padding: '12px 24px', borderRadius: '6px',
+                    textDecoration: 'none', whiteSpace: 'nowrap',
+                  }}
+                >
+                  Request a quote →
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -332,14 +333,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               color: '#1B3FA0', letterSpacing: '0.14em',
               textTransform: 'uppercase', marginBottom: '6px',
             }}>
-              More in {catLabel}
+              เพิ่มเติมในหมวด {catLabel}
             </div>
             <h2 style={{
               fontFamily: 'var(--font-heading), sans-serif',
               fontWeight: '700', fontSize: '1.5rem',
               color: '#0E1424', marginBottom: '24px',
             }}>
-              Related products
+              สินค้าที่เกี่ยวข้อง
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {related.map(r => (
@@ -368,7 +369,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         letterSpacing: '0.1em', textTransform: 'uppercase',
                         marginBottom: '4px',
                       }}>
-                        {r.model}
+                        {brandLabels[r.brand]}
                       </div>
                       <div style={{
                         fontFamily: 'var(--font-heading), sans-serif',
@@ -381,7 +382,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         fontFamily: 'var(--font-sans), sans-serif',
                         fontSize: '13px', fontWeight: '600', color: '#1B3FA0',
                       }}>
-                        View specs →
+                        ดูรายละเอียด →
                       </span>
                     </div>
                   </div>
@@ -400,14 +401,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
       }}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between flex-wrap gap-3">
           <Link href="/">
-            <Image src="/logo-white.svg" alt="NUTRAS DIDACTIC" width={140} height={36}
+            <Image src="/nutras-logo-white-t.png" alt="NuTras Didactic" width={400} height={101}
               style={{ height: '28px', width: 'auto', opacity: 0.7 }} />
           </Link>
           <div style={{
             fontFamily: 'var(--font-mono), monospace',
             fontSize: '11px', color: '#4B5E8A', letterSpacing: '0.06em',
           }}>
-            © 2026 NUTRAS DIDACTIC Co., Ltd. · ISO 9001 · CE · IEC
+            © 2026 NuTras Didactic Co., Ltd.
           </div>
         </div>
       </div>

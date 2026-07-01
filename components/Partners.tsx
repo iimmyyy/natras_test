@@ -1,8 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useLang } from './LangContext'
-import { academicPartners, techPartners } from '@/app/data'
+import { lucasNuelleCategories } from '@/app/data'
 import AnimateIn from './AnimateIn'
 
 export default function Partners() {
@@ -15,98 +16,111 @@ export default function Partners() {
           <div style={{
             fontFamily: 'var(--font-mono), monospace',
             fontSize: '11px', fontWeight: '600',
-            color: '#ffffff', letterSpacing: '0.12em',
+            color: '#78c1ff', letterSpacing: '0.12em',
             textTransform: 'uppercase', marginBottom: '12px',
           }}>
             {t.partnersLabel}
           </div>
         </AnimateIn>
 
-        {/* Academic */}
-        <AnimateIn delay={0.05}>
-          <h3 style={{
-            fontFamily: 'var(--font-heading), sans-serif',
-            fontWeight: '600', fontSize: '18px',
-            color: '#ffffff', marginBottom: '18px',
-          }}>
-            {t.academicTitle}
-          </h3>
-        </AnimateIn>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mb-14">
-          {academicPartners.map((p, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: i * 0.06 }}
-              whileHover={{ y: -3, boxShadow: '0 8px 28px rgba(0,0,0,0.3)' }}
-              style={{
-                backgroundColor: 'rgba(255,255,255,0.07)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '10px',
-                padding: '20px 12px',
-                display: 'flex', flexDirection: 'column',
-                alignItems: 'center', justifyContent: 'center',
-                gap: '6px', cursor: 'default',
-                transition: 'border-color 0.2s',
-              }}
-            >
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          {/* Left — Lucas-Nülle brand card */}
+          <AnimateIn delay={0.05}>
+            <div style={{
+              background: 'rgba(255,255,255,0.06)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              borderRadius: '16px', padding: '32px',
+            }}>
               <div style={{
+                background: '#ffffff', borderRadius: '12px',
+                padding: '28px', display: 'flex', alignItems: 'center',
+                justifyContent: 'center', marginBottom: '22px',
+              }}>
+                <Image
+                  src="/lucas-nuelle-logo.png"
+                  alt="Lucas-Nülle"
+                  width={220} height={220}
+                  style={{ width: 'auto', height: '120px', objectFit: 'contain' }}
+                />
+              </div>
+              <h3 style={{
                 fontFamily: 'var(--font-heading), sans-serif',
-                fontWeight: '700', fontSize: '20px',
-                color: '#ffffff',
+                fontWeight: '700', fontSize: '22px',
+                color: '#ffffff', marginBottom: '10px',
               }}>
-                {p.abbr}
-              </div>
-              <div style={{
+                ตัวแทนจำหน่าย Lucas-Nülle อย่างเป็นทางการ
+              </h3>
+              <p style={{
                 fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: '10px', color: '#7F9AE8',
-                textAlign: 'center', lineHeight: '1.4',
+                fontSize: '15px', color: '#9FB6F0', lineHeight: '1.7',
+                marginBottom: '20px',
               }}>
-                {p.name}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                NuTras Didactic เป็นตัวแทนจำหน่ายชุดฝึก Lucas-Nülle สำหรับตลาด
+                ประเทศไทย — ครอบคลุมด้านพลังงาน ยานยนต์ ระบบอัตโนมัติ และงาน
+                บำรุงรักษาในอุตสาหกรรม สำหรับมหาวิทยาลัย วิทยาลัย และศูนย์ฝึกอบรม
+              </p>
+              <a
+                href="https://www.lucas-nuelle.us/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '6px',
+                  background: '#f58531', color: '#ffffff',
+                  fontFamily: 'var(--font-sans), sans-serif',
+                  fontWeight: '700', fontSize: '14px',
+                  padding: '11px 22px', borderRadius: '6px',
+                  textDecoration: 'none',
+                }}
+              >
+เยี่ยมชม Lucas-Nülle ↗
+              </a>
+            </div>
+          </AnimateIn>
 
-        {/* Technology */}
-        <AnimateIn delay={0.1}>
-          <h3 style={{
-            fontFamily: 'var(--font-heading), sans-serif',
-            fontWeight: '600', fontSize: '18px',
-            color: '#ffffff', marginBottom: '18px',
-          }}>
-            {t.techTitle}
-          </h3>
-        </AnimateIn>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          {techPartners.map((name, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, delay: i * 0.06 }}
-              whileHover={{ y: -3, boxShadow: '0 8px 28px rgba(0,0,0,0.3)' }}
-              style={{
-                backgroundColor: 'rgba(255,255,255,0.07)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '10px',
-                padding: '18px 12px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                cursor: 'default',
-              }}
-            >
-              <div style={{
-                fontFamily: 'var(--font-mono), monospace',
-                fontWeight: '600', fontSize: '12px',
-                color: '#ffffff', letterSpacing: '0.06em',
-              }}>
-                {name}
-              </div>
-            </motion.div>
-          ))}
+          {/* Right — full category list */}
+          <AnimateIn delay={0.1}>
+            <h3 style={{
+              fontFamily: 'var(--font-heading), sans-serif',
+              fontWeight: '600', fontSize: '18px',
+              color: '#ffffff', marginBottom: '16px',
+            }}>
+              กลุ่มผลิตภัณฑ์ทั้งหมด
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-2.5">
+              {lucasNuelleCategories.map((c, i) => (
+                <motion.a
+                  key={i}
+                  href={c.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.03 }}
+                  whileHover={{ y: -2 }}
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '10px',
+                    padding: '13px 15px',
+                    display: 'flex', alignItems: 'center', gap: '10px',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span style={{
+                    width: '6px', height: '6px', borderRadius: '50%',
+                    background: '#f58531', flexShrink: 0,
+                  }} />
+                  <span style={{
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: '13px', color: '#C9D5F2', lineHeight: '1.4',
+                  }}>
+                    {c.name}
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+          </AnimateIn>
         </div>
       </div>
     </section>
