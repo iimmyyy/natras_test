@@ -8,8 +8,8 @@ export const strings = {
   email: 'sales.nutras@gmail.com',
   location: 'ประเทศไทย',
 
-  nav: ['Own Products', 'Lucas-Nülle', 'Markets', 'Hydrogen', 'Contact'],
-  navLinks: ['#products', '#partners', '#markets', '#spec', '#contact'],
+  nav: ['Own Products', 'Lucas-Nülle', 'Markets', 'Blog', 'Events', 'Contact'],
+  navLinks: ['/#products', '/#partners', '/#markets', '/#blog', '/#events', '/#contact'],
   cta: 'Contact us',
 
   heroEyebrow: 'Industrial & Engineering Didactic Solutions',
@@ -80,8 +80,8 @@ export const strings = {
   footerTagline:
     'บริษัท นูทราส ไดแดกติก จำกัด — ชุดฝึกทางวิศวกรรมและโซลูชันการเรียนรู้เชิงปฏิบัติ สำหรับสถานศึกษา อุตสาหกรรม และศูนย์ฝึกอบรมในประเทศไทย',
   footerProducts: ['NuTras Own Products', 'Lucas-Nülle Training Systems', 'Hydrogen Power Training', 'Automation & Industry 4.0'],
-  footerCompany: ['Own Products', 'Lucas-Nülle', 'Markets', 'Hydrogen', 'Contact'],
-  footerCompanyLinks: ['#products', '#partners', '#markets', '#spec', '#contact'],
+  footerCompany: ['Own Products', 'Lucas-Nülle', 'Blog', 'Events', 'Contact'],
+  footerCompanyLinks: ['/#products', '/#partners', '/blog', '/events', '/#contact'],
   footerContact: 'บริษัท นูทราส ไดแดกติก จำกัด\nประเทศไทย\nsales.nutras@gmail.com',
   copyright: '© 2026 บริษัท นูทราส ไดแดกติก จำกัด สงวนลิขสิทธิ์',
 }

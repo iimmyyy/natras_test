@@ -1,15 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { products, productImages, productDetails, catLabels, catColors, brandLabels } from '@/app/data'
+import { catLabels, catColors, brandLabels } from '@/app/data'
+import { getCatalog } from '@/app/lib/content'
 import BackButton from '@/components/BackButton'
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const { products } = await getCatalog()
   return products.map(p => ({ id: p.id }))
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
+  const { products, productImages, productDetails } = await getCatalog()
   const product = products.find(p => p.id === id)
   if (!product) notFound()
 

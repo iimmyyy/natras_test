@@ -5,10 +5,18 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from './LangContext'
 import Link from 'next/link'
-import { products, productImages, catColors, catLabels, brandLabels } from '@/app/data'
+import { catColors, catLabels, brandLabels, type Brand } from '@/app/data'
 import AnimateIn from './AnimateIn'
 
-export default function Products() {
+type ProductCard = { id: string; name: string; category: string; brand: Brand }
+
+export default function Products({
+  products,
+  productImages,
+}: {
+  products: ProductCard[]
+  productImages: Record<string, string>
+}) {
   const { t } = useLang()
   const [activeCat, setActiveCat] = useState('all')
 
